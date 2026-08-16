@@ -1,0 +1,103 @@
+/* ============================================================
+   Kids World — Drawing section styles
+   ============================================================ */
+
+.draw-panel {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.draw-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.draw-toolbar__group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.draw-toolbar__label {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+}
+
+.swatches {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(43, 43, 94, 0.18);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.swatch:hover {
+    transform: scale(1.15);
+}
+
+.swatch.is-active {
+    border-color: var(--ink);
+    transform: scale(1.15);
+    box-shadow: 0 6px 14px rgba(43, 43, 94, 0.3);
+}
+
+.brush-range {
+    width: 130px;
+    accent-color: var(--pink);
+    cursor: pointer;
+}
+
+#brushValue {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.canvas-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 3px solid rgba(255, 255, 255, 0.85);
+    box-shadow: var(--shadow-soft);
+}
+
+#drawCanvas {
+    display: block;
+    width: 100%;
+    height: 55vh;
+    min-height: 300px;
+    max-height: 620px;
+    touch-action: none;
+    cursor: crosshair;
+}
+
+.draw-hint {
+    text-align: center;
+    margin-top: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+    #drawCanvas {
+        height: 48vh;
+        min-height: 260px;
+    }
+}

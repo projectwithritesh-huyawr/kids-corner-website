@@ -1,0 +1,274 @@
+/* ============================================================
+   Kids World — Puzzles section styles
+   ============================================================ */
+
+/* ---------- Puzzle lobby ---------- */
+
+.puzzle-lobby {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    max-width: 760px;
+    margin: 26px auto 34px;
+}
+
+.puzzle-lobby-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 180px;
+    padding: 20px;
+    border: none;
+    border-radius: 26px;
+    color: var(--white);
+    font-family: var(--font-head);
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.puzzle-lobby-card:first-child {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+}
+
+.puzzle-lobby-card:last-child {
+    background: linear-gradient(135deg, var(--green), var(--teal));
+}
+
+.puzzle-lobby-card:hover,
+.puzzle-lobby-card:focus-visible {
+    transform: translateY(-10px) scale(1.04) rotate(-1.5deg);
+    box-shadow: var(--shadow-pop);
+    outline: none;
+}
+
+.puzzle-lobby-card:active {
+    transform: scale(0.94);
+}
+
+.puzzle-lobby-card__emoji {
+    font-size: 3rem;
+    animation: emojiBob 3s ease-in-out infinite;
+}
+
+.puzzle-lobby-card__name {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.puzzle-lobby-card__hint {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+}
+
+.puzzle-lobby.is-hidden {
+    display: none;
+}
+
+@keyframes emojiBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-6px) rotate(4deg); }
+}
+
+/* ---------- Puzzle view ---------- */
+
+.puzzle-view {
+    display: none;
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.puzzle-view.is-active {
+    display: block;
+}
+
+.tile-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.tile-options {
+    display: flex;
+    gap: 8px;
+}
+
+.chip-btn {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(43, 43, 94, 0.15);
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chip-btn.is-active {
+    color: var(--white);
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    border-color: transparent;
+}
+
+.chip-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 10px rgba(43, 43, 94, 0.1);
+}
+
+.chip-toggle input {
+    accent-color: var(--pink);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* ---------- Tile board ---------- */
+
+.tile-board {
+    display: grid;
+    gap: 8px;
+    max-width: 400px;
+    margin: 18px auto 0;
+    padding: 10px;
+    border-radius: 20px;
+    background: rgba(43, 43, 94, 0.12);
+}
+
+.tile-board[data-size="3"] {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.tile-board[data-size="4"] {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tile {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(43, 43, 94, 0.22);
+    cursor: pointer;
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.tile:hover {
+    filter: brightness(1.12);
+    transform: scale(1.04);
+}
+
+.tile.is-empty {
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+    visibility: hidden;
+}
+
+.tile.is-moving {
+    animation: tilePop 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes tilePop {
+    0%   { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+.tile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+/* ---------- Odd one out ---------- */
+
+.odd-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 360px;
+    margin: 18px auto 0;
+}
+
+.odd-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+    border: none;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 16px rgba(43, 43, 94, 0.12);
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.odd-cell:hover {
+    transform: scale(1.08);
+}
+
+.odd-cell.is-found {
+    animation: oddPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: linear-gradient(135deg, var(--yellow), var(--green));
+}
+
+.odd-cell.is-wrong {
+    animation: oddWrong 0.3s ease;
+    background: rgba(255, 107, 107, 0.35);
+}
+
+@keyframes oddWrong {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-6px); }
+    75%      { transform: translateX(6px); }
+}
+
+@keyframes oddPop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.3) rotate(10deg); }
+    100% { transform: scale(1); }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 480px) {
+    .puzzle-lobby {
+        grid-template-columns: 1fr;
+    }
+
+    .tile-board {
+        max-width: 300px;
+    }
+
+    .tile {
+        font-size: 1.5rem;
+    }
+}

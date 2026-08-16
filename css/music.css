@@ -1,0 +1,177 @@
+/* ============================================================
+   Kids World — Music section styles
+   ============================================================ */
+
+.music-panel {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.music-block {
+    margin-bottom: 26px;
+}
+
+.music-block__title {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 14px;
+}
+
+.volume-range {
+    width: 120px;
+    accent-color: var(--purple);
+    cursor: pointer;
+}
+
+/* ---------- Piano ---------- */
+
+.piano {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px 10px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(43, 43, 94, 0.15), rgba(43, 43, 94, 0.08));
+}
+
+.key {
+    flex: 1;
+    max-width: 64px;
+    height: 150px;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    box-shadow: 0 8px 16px rgba(43, 43, 94, 0.2);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.key:nth-child(1) { background: linear-gradient(180deg, #ff5e9c, #d6407f); }
+.key:nth-child(2) { background: linear-gradient(180deg, #ff9f45, #e07c24); }
+.key:nth-child(3) { background: linear-gradient(180deg, #ffd166, #e0a92e); }
+.key:nth-child(4) { background: linear-gradient(180deg, #06d6a0, #05a87c); }
+.key:nth-child(5) { background: linear-gradient(180deg, #2ec4b6, #1e9a90); }
+.key:nth-child(6) { background: linear-gradient(180deg, #4d96ff, #2f6fce); }
+.key:nth-child(7) { background: linear-gradient(180deg, #8b5cf6, #6a3fd0); }
+.key:nth-child(8) { background: linear-gradient(180deg, #ff6b6b, #d84343); }
+
+.key:hover {
+    filter: brightness(1.1);
+}
+
+.key.is-pressed {
+    transform: translateY(5px) scale(0.97);
+    box-shadow: 0 3px 8px rgba(43, 43, 94, 0.25);
+}
+
+/* ---------- Drum pads ---------- */
+
+.drum-pads {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.drum-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    aspect-ratio: 1;
+    max-height: 130px;
+    border: none;
+    border-radius: 22px;
+    font-size: 1.6rem;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(43, 43, 94, 0.22);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.drum-pad span {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-shadow: 0 2px 6px rgba(43, 43, 94, 0.3);
+}
+
+.drum-pad--kick  { background: linear-gradient(135deg, #ff6b6b, #d84343); }
+.drum-pad--snare { background: linear-gradient(135deg, #ff9f45, #e07c24); }
+.drum-pad--hat   { background: linear-gradient(135deg, #4d96ff, #2f6fce); }
+.drum-pad--clap  { background: linear-gradient(135deg, #8b5cf6, #6a3fd0); }
+
+.drum-pad:hover {
+    filter: brightness(1.1);
+}
+
+.drum-pad.is-pressed {
+    transform: scale(0.92);
+    box-shadow: 0 4px 10px rgba(43, 43, 94, 0.2);
+}
+
+/* ---------- Tunes ---------- */
+
+.tune-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.note-walk {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    font-size: 1.8rem;
+    min-height: 48px;
+}
+
+.note {
+    animation: noteBounce 1s ease-in-out infinite;
+}
+
+.note:nth-child(2) { animation-delay: 0.15s; }
+.note:nth-child(3) { animation-delay: 0.3s; }
+
+.note-walk.is-playing .note {
+    animation: noteWalk 0.5s ease-in-out infinite;
+}
+
+@keyframes noteBounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+
+@keyframes noteWalk {
+    0%   { transform: translateX(0) scale(1); }
+    50%  { transform: translateX(24px) scale(1.2) rotate(10deg); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+.note-walk.is-playing .note:nth-child(2) { animation-delay: 0.12s; }
+.note-walk.is-playing .note:nth-child(3) { animation-delay: 0.24s; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+    .key {
+        height: 120px;
+        font-size: 0.9rem;
+    }
+
+    .drum-pads {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
